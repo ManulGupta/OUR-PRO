@@ -186,6 +186,7 @@ def signup(request):
 				user.save();
 				auth.login(request,user)
 				print('user created')
+				Customer.objects.create(user=user, name=username, email=user.email)
 		else:
 			messages.info(request,'Password not Matching')
 			return redirect('/account')
